@@ -48,3 +48,18 @@ export async function UpdateProducts( id, product ){
   const [resp] = await con.query(command, [product.title, product.text, id])
   return resp.affectedRows
 }
+
+export async function ListProductFromId(id){
+  const command = 
+  `
+  select id_home      id,
+         ds_titulo    title,
+         ds_texto     text,
+         img_banner   img
+    from tb_home 
+   where id_home    =  ?  
+  `
+
+  const [lines] = await con.query(command, [id])
+  return lines[0]
+}

@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import multer from 'multer'
-import { ListProducts, RegisterImage, RegisterProduct, UpdateProducts } from '../repository/homeRepository.js'
+import { ListProductFromId, ListProducts, RegisterImage, RegisterProduct, UpdateProducts } from '../repository/homeRepository.js'
 
 const upload = multer({ dest: 'storage/capas' })
 
@@ -79,6 +79,25 @@ server.put('/api/produtos/:id', async (req, resp) => {
       throw new Error("O produto não pode ser alterado")
     else
       resp.status(204).send()
+
+  } catch (err) {
+    resp.status(404).send({
+      erro: err.message
+    })
+  }
+})
+
+server.get('/api/produtos/:id', async (req, resp) => {
+  try {
+    const { id } = req.params
+
+    const response = await ListProductFromId(id)
+
+    if (!response) {
+      throw new Error('O produto não existe')
+    } else {
+      resp.send(response)
+    }
 
   } catch (err) {
     resp.status(404).send({

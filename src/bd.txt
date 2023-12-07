@@ -1,0 +1,21 @@
+create database db_uget;
+
+use db_uget;
+
+create table tb_admin(
+	id_admin 		int primary key auto_increment,
+    nm_admin		varchar(100),
+    ds_username		varchar(100),
+    ds_senha		varchar(100)
+);
+
+create table tb_home(
+	id_home		int primary key auto_increment,
+    ds_titulo	varchar(100),
+    ds_texto	varchar(1000),
+    img_banner	varchar(1000)
+);
+
+truncate tb_home;
+
+select*from tb_home
