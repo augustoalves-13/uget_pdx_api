@@ -3,6 +3,7 @@ import cors from 'cors'
 import express from 'express'
 import homeController from './controller/homeController.js'
 import adminController from './controller/adminController.js'
+import productController from './controller/productController.js'
 
 const Api = express()
 Api.use(express.json())
@@ -12,6 +13,7 @@ Api.use(cors())
 Api.use('/storage/capas', express.static("storage/capas"))
 
 //endpoints
+Api.use(productController)
 Api.use(adminController)
 Api.use(homeController)
 

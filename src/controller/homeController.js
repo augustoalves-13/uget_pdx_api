@@ -65,7 +65,7 @@ server.get('/api/produtos', async (req, resp) => {
 
 server.put('/api/produtos/:id', async (req, resp) => {
   try {
-    const { id } = req.params
+    const { id } = req.params 
     const request = req.body
 
     if (!request.title)
