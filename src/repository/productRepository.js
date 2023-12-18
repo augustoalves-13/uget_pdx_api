@@ -28,6 +28,17 @@ export async function RegisterProductItem(product){
     return product
 }
 
+
+export async function SaveImagens(idProduto, imagem){
+    const command = 
+    `
+    insert into tb_produto_imagem(id_produto, img_imagem)
+                            values(?,?)
+    `
+    const [resp] = await con.query(command, [idProduto , imagem])
+}
+
+
 export async function ListProductItem(){    
     const command = 
     `
@@ -63,4 +74,17 @@ export async function ListProductItemById(id){
     `
     const [lines] = await con.query(command, [id])
     return lines[0]
+} 
+
+export async function GetProductsImageById(id){
+    const command = 
+    `
+        select  id_produto_imagem       id,
+                id_produto              idProduto,
+                img_imagem              img
+           from tb_produto_imagem
+          where id_produto          =   ? 
+    `
+    const [lines] = await con.query(command, [id])
+    return lines
 }
