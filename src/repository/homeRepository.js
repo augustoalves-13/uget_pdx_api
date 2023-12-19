@@ -63,3 +63,20 @@ export async function ListProductFromId(id){
   const [lines] = await con.query(command, [id])
   return lines[0]
 }
+
+export async function PostInSlider(info){
+  const command = 
+  `
+  insert into tb_slider(ds_title, ds_txt)
+              values(?,?)
+  `
+  const resp = await con.query(command, [
+    info.title,
+    info.txt,
+    info.background
+  ])
+  const response = resp[0]
+  info.id = response.insertId
+
+  return info
+}

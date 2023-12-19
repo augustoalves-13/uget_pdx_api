@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import multer from 'multer'
-import { ListProductFromId, ListProducts, RegisterImage, RegisterProduct, UpdateProducts } from '../repository/homeRepository.js'
+import { ListProductFromId, ListProducts, PostInSlider, RegisterImage, RegisterProduct, UpdateProducts } from '../repository/homeRepository.js'
 
 const upload = multer({ dest: 'storage/capas' })
 

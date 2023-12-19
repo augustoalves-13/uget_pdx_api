@@ -4,6 +4,7 @@ import express from 'express'
 import homeController from './controller/homeController.js'
 import adminController from './controller/adminController.js'
 import productController from './controller/productController.js'
+import sliderRepository from './controller/sliderController.js'
 
 const Api = express()
 Api.use(express.json())
@@ -14,6 +15,7 @@ Api.use('/storage/capas', express.static("storage/capas"))
 Api.use('/storage/produto', express.static("storage/produto"))
 
 //endpoints
+Api.use(sliderRepository)
 Api.use(productController)
 Api.use(adminController)
 Api.use(homeController)
