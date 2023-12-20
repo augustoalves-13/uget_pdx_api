@@ -13,6 +13,7 @@ Api.use(cors())
 //liberar arquivos da storage
 Api.use('/storage/capas', express.static("storage/capas"))
 Api.use('/storage/produto', express.static("storage/produto"))
+Api.use('/storage/slider', express.static("storage/slider"))
 
 //endpoints
 Api.use(sliderRepository)
